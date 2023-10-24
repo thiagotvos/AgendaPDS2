@@ -1,4 +1,4 @@
-# AgendaPDS2
+<h1 align="center"> AgendaPDS2 </h1>
 Um projeto de PDS2 dos alunos da UFMG, um gerenciador de tarefas e compromissos!
 # Status
 > :construction: Projeto em construção :construction:
