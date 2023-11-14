@@ -3,8 +3,8 @@
    
  class Tarefa {
   public:
-   Tarefa(std::string titulo, std::string descricao, unsigned dia,
-          unsigned mes, unsigned ano, unsigned prioridade, std::string estado);
+   Tarefa(std::string& titulo, std::string& descricao, std::string& data,
+          unsigned prioridade, std::string& estado);
     
      std::string getTitulo() const;
      unsigned getPrioridade() const;
@@ -13,9 +13,7 @@
   private:
      std::string titulo;
      std::string descricao;
-     unsigned dia;
-     unsigned mes;
-     unsigned ano; 
+     std::string data;
      unsigned prioridade;
      std::string estado;
       //3 tipos de estado: feito (deletar em seguida); em progresso; não feito (alertar)
@@ -25,20 +23,14 @@
 
 class Compromisso : public Tarefa {
   public:
-    Compromisso(unsigned hora, unsigned minutos, unsigned segundos, std::string local,
-                 std::string titulo, std::string descricao, unsigned dia,
-                 unsigned mes, unsigned ano, unsigned prioridade,std::string estado);
+    Compromisso(std::string& data, std::string& local,std::string& titulo,
+                std::string& descricao, std::string& horario, unsigned prioridade, std::string& estado);
     
     std::string getLocal() const;
-    unsigned getHora() const;
-    unsigned getMinutos() const;
-    unsigned getSegundos() const;
+    std::string getHorario() const;
 
   private:
     std::string local;
-    unsigned hora;
-    unsigned minutos;
-    unsigned segundos;
-
+    std::string horario;
 };
 
