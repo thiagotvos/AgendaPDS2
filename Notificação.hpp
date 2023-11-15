@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 #include <list>
-#include "Tarefa.hpp"
-#include "Usuario.hpp"
    
 class Notificacao {
 public:
@@ -27,6 +25,7 @@ public:
 
     void removerNotificacao(Notificacao* notificacao);
     //remove a notificação da lista de notificações
+
 private:
     std::list<Notificacao> listadeNotificacao;
 
