@@ -9,6 +9,12 @@
      std::string getTitulo() const;
      unsigned getPrioridade() const;
      std::string getEstado() const; 
+
+    void setTitulo(const std::string& novoTitulo);
+    void setDescricao(const std::string& novaDescricao);
+    void setData(const std::string& novaData);
+    void setPrioridade(unsigned novaPrioridade);
+    void setEstado(const std::string& novoEstado);
    
   private:
      std::string titulo;
@@ -28,6 +34,9 @@ class Compromisso : public Tarefa {
     
     std::string getLocal() const;
     std::string getHorario() const;
+
+    void setLocal(const std::string& novoLocal);
+    void setHorario(const std::string& novoHorario);
 
   private:
     std::string local;
