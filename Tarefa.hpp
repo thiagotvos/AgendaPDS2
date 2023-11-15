@@ -24,7 +24,7 @@
 class Compromisso : public Tarefa {
   public:
     Compromisso(std::string& data, std::string& local,std::string& titulo,
-                std::string& descricao, std::string& horario, unsigned prioridade, std::string& estado);
+                std::string& descricao, std::string& horario, std::string& estado);
     
     std::string getLocal() const;
     std::string getHorario() const;
