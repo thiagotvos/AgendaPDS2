@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include <vector>
-
+#include "Tarefa.hpp"
+#include "Usuario.hpp"
    
 class Notificacao {
 public:
@@ -9,9 +10,13 @@ public:
 
     std::string getdata() const;
     std::string gethorario() const;
+    
     void adicionarMensagem (std::string texto);
     //Adiciona uma mensagem especifica a notificação
-
+    void notificarTarefa (Tarefa* tarefa, Usuario* usuario);
+    //Adiciona Notificação com base em uma tarefa de um usuario
+    void notificarCompromisso (Compromisso* compromisso, Usuario* usuario);
+    //Adiciona Notificação com base em um compromisso de um usuario
     void notificar (Notificacao* notificacao);
     //imprime a notificação na tela
 
