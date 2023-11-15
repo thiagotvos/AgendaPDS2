@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <vector>
+#include <list>
 #include "Tarefa.hpp"
 #include "Usuario.hpp"
    
@@ -13,18 +13,11 @@ public:
     
     void adicionarMensagem (std::string texto);
     //Adiciona uma mensagem especifica a notificação
-    void notificarTarefa (Tarefa* tarefa, Usuario* usuario);
-    //Adiciona Notificação com base em uma tarefa de um usuario
-    void notificarCompromisso (Compromisso* compromisso, Usuario* usuario);
-    //Adiciona Notificação com base em um compromisso de um usuario
-    void notificar (Notificacao* notificacao);
-    //imprime a notificação na tela
 
 private:
     std::string data;
     std::string horario;
     std::string mensagem;
-
 };
 
 class ListaNotificacao {
@@ -35,6 +28,6 @@ public:
     void removerNotificacao(Notificacao* notificacao);
     //remove a notificação da lista de notificações
 private:
-        std::vector<Notificacao*> listaNotificacao;
+    std::list<Notificacao> listadeNotificacao;
 
 };
