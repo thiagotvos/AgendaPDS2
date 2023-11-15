@@ -10,7 +10,7 @@
      std::string getemail() const; 
 
      void mudaremail (std::string texto);
-   
+      
   private:
      std::string nome;
      std::string sobrenome;
