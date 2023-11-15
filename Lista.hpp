@@ -1,23 +1,30 @@
 #pragma once
 #include <string>
 #include "Tarefa.hpp"
-   
-class Lista {
+#include <list>
+
+class ListaTarefa {
 public:
-    Lista();
-    ~Lista();
+    ListaTarefa();
+    ~ListaTarefa();
 
     void adicionarTarefa(Tarefa* tarefa);
-    void adicionarCompromisso(Compromisso* compromisso);
     void removerTarefa(Tarefa* tarefa);
-    void removerCompromisso(Compromisso* compromisso);
+    void verTarefas();
 
 private:
-    struct Node {
-        Tarefa* tarefa;
-        Compromisso* compromisso;
-        Node* proximo;
-    };
+    std::list<Tarefa> listadeTarefa;
+};
 
-    Node* cabeca;
+class ListaCompromisso {
+public:
+    ListaCompromisso();
+    ~ListaCompromisso();
+
+    void adicionarCompromisso(Compromisso* compromisso);
+    void removerCompromisso(Compromisso* compromisso);
+    void verCompromissos();
+
+private:
+    std::list<Compromisso> listadeCompromisso;
 };
