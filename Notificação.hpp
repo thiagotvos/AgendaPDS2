@@ -7,7 +7,7 @@
 
 class Notificacao {
 public:
-    Notificacao(int AntecedenciaMinutos, int AntecedenciaHoras);
+    Notificacao(const int AntecedenciaMinutos,const int AntecedenciaHoras);
     
     int getAntecedenciaMinutos() const;
     int getAntecedenciaHoras() const;
@@ -32,4 +32,6 @@ private:
     // de 0 a 59 min 
     int AntecedenciaHoras;
     // de 1 a 23 horas
+
 };
+
