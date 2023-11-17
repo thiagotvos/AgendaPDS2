@@ -9,8 +9,11 @@ public:
     std::string getdata() const;
     std::string gethorario() const;
     
+    ///@brief Adiciona/Altera uma mensagem especifica de um lembrete
+    ///
+    /// @param texto        Amensagem a ser mudada/adicionada
     void alterarMensagem (std::string texto);
-    //Adiciona uma mensagem especifica a notificação
+    
 
 private:
     std::string data;
@@ -20,11 +23,16 @@ private:
 
 class ListaLembrete {
 public:
+    ///@brief Adiciona um Lembrete a lista de Lembretes
+    ///
+    /// @param lembrete   O Lembrete a ser adicionado
     void adicionarLembrete(Lembrete* lembrete);
-    //adiciona a notificação a lista de notificações
-
+    
+    ///@brief Remove um Lembrete da lista de Lembretes
+    ///
+    /// @param lembrete   O Lembrete a ser removido
     void removerLembrete(Lembrete* lembrete);
-    //remove a notificação da lista de notificações
+    
 
 private:
     std::list<Lembrete> listadeLembretes;
