@@ -14,19 +14,37 @@ class Calendario {
 public:
     Calendario();  
 
-    // interação entre tarefas e calendario
+    /// @brief Adiciona um Tarefa ao Calendario
+    ///
+    /// @param tarefa        A Tarefa a ser adicionada
     void adicionarTarefaCalendario(const Tarefa& tarefa);
-    void removerTarefaCalendario(const std::string& nomeTarefa);
 
-    // interação entre compromissos e calendario
+    /// @brief Remove uma Tarefa do Calendario
+    ///
+    /// @param tarefa        A Tarefa a ser removida
+    void removerTarefaCalendario(const Tarefa& tarefa);
+
+    /// @brief Adiciona um Compromisso ao Calendario
+    ///
+    /// @param compromisso        O Compromisso a ser adicionado
     void adicionarCompromissoCalendario(const Compromisso& compromisso);
-    void removerCompromissoCalendario(const std::string& descricaoCompromisso);
 
-    //interação entre Lembretes e calendario
+    /// @brief Remove um Compromisso do Calendario
+    ///
+    /// @param compromisso        O Compromisso a ser removido
+    void removerCompromissoCalendario(const Compromisso& compromisso);
+
+    /// @brief Adiciona um Lembrete ao Calendario
+    ///
+    /// @param compromisso        O lembrete a ser adicionado
     void adicionarLembreteCalendario(const Lembrete& lembrete);
-    void removerLembreteCalendario(const std::string& descricaoLembrete);
 
-    // imprimir o calendário da semana atual 
+    /// @brief Remove um lembrete do Calendario
+    ///
+    /// @param compromisso        O Lembrete a ser removido
+    void removerLembreteCalendario(const Lembrete& lembrete);
+
+    /// @brief Imprime o calendário da semana atual 
     void imprimirCalendario() const;
 private:
     ListaTarefa listaTarefas;
