@@ -16,7 +16,7 @@ std::string Lembrete::gethorario() const {
 void Lembrete::alterarMensagem(std::string nova_mensagem) {
     
     // Verifica se a nova mensagem esta vazia, ou se a nova mensagem eh igual a mensagem atual
-    if (!nova_mensagem.empty() || nova_mensagem != mensagem) {
+    if (!nova_mensagem.empty() || nova_mensagem != this->mensagem) {
 
         // Atribui a nova mensagem
         this->mensagem = nova_mensagem;
