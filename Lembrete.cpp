@@ -24,11 +24,13 @@ void Lembrete::alterarMensagem(std::string nova_mensagem) {
 }
 
 void ListaLembrete::adicionarLembrete(Lembrete* lembrete) {
-
-    // A fazer
+    
+    // Adicionando o lembrete na lista
+    listadeLembretes.push_back(*lembrete);
 }
 
 void ListaLembrete::removerLembrete(Lembrete* lembrete) {
 
-    // A fazer
+    // Removendo o lembrete da lista
+    listadeLembretes.remove(*lembrete);
 }
