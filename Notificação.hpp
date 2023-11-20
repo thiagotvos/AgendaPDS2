@@ -12,26 +12,44 @@ public:
     int getAntecedenciaMinutos() const;
     int getAntecedenciaHoras() const;
 
+    /// @brief Muda a antecedência, em minutos, de uma notificação
+    ///
+    /// @param NovaAntecedencia       A antecedência a ser alterada
+    ///
+    /// @attetion NovaAntecedencia deve variar entre:
+    /// 1 e 59 minutos.
     void setAntecedenciaMinutos(int NovaAntecedencia);
-    // redefine a antecedência desejada em minutos
-
+    
+    /// @brief Muda a antecedência, em horas, de uma notificação
+    ///
+    /// @param NovaAntecedencia       A antecedência a ser alterada
+    ///
+    /// @attetion NovaAntecedencia deve variar entre:
+    /// 1 e 23 horas.
     void setAntecedenciaHoras(int NovaAntecedencia);
-    // redefine a antecedência desejada em horas
 
+    /// @brief Compara com o horário real e notifica uma Tarefa
+    ///com o tempo de antecedência ou no horário programado.
+    ///
+    /// @param tarefa       A tarefa a ser notificada.
     void notificarTarefa(Tarefa* tarefa);
-    // compara com o horário real e notifica tarefa (com certo tempo de antecedência ou no horário programado)
-
+    
+    /// @brief Compara com o horário real e notifica um Compromisso
+    ///com o tempo de antecedência ou no horário programado.
+    ///
+    /// @param compromisso       O compromisso a ser notificado.
     void notificarCompromisso(Compromisso* compromisso);
-    // compara com o horário real e notifica Compromisso (com certo tempo de antecedência ou no horário programado)
-
+    
+    /// @brief Compara com o horário real e notifica um Lembrete
+    ///com o tempo de antecedência ou no horário programado.
+    ///
+    /// @param lembrete       O lembrete a ser notificado.
     void notificarLembrete(Lembrete* lembrete);
-    // compara com o horário real e notifica Lembrete (com certo tempo de antecedência ou no horário programado)
 
 private:
     int AntecedenciaMinutos;
-    // de 0 a 59 min 
+    // de 1 a 59 min 
     int AntecedenciaHoras;
     // de 1 a 23 horas
-
 };
 
