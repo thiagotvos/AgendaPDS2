@@ -1,37 +1,48 @@
-#include <iostream>
 #include "Usuario.hpp"
+#include "Exceções.hpp"
+#include <iostream>
 #include <string>
 #include <sstream>
 
 std::string Usuario::getnome() const {
 
-    // Retorna o nome
-    return this->nome;
+    return this->nome; ///< Retorna o nome
 }
 std::string Usuario::getemail() const {
     
-    // Retorna o email
-    return this->email;
+    return this->email; ///< Retorna o email
 }
 
 void Usuario::mudaremail(std::string novo_email) {
-    std::istringstream iss(novo_email);
-    std::string usuario, dominio;
+    try {
+        std::istringstream iss(novo_email);
+        std::string usuario, dominio;
 
-    // Quebra o novo email em partes, para fazer as verificacoes necessarias
-    std::getline(iss, usuario, '@');
-    std::getline(iss, dominio);
+        /// Quebra o novo email em partes, para fazer as verificacoes necessarias
+        std::getline(iss, usuario, '@');
+        std::getline(iss, dominio);
 
-    // Verifica se o usuario ou dominio estao preenchidos
-    if (usuario == "" || dominio == "") {
-       // email invalido
+        /// Verifica se o usuario ou dominio estao preenchidos
+        if (usuario == "" || dominio == "") {
+        
+            throw std::invalid_argument("Email incompleto"); 
+        }
+
+        /// Verifica se o dominio esta preenchido corretamente
+        if (dominio != "gmail.com" && dominio != "yahoo.com" && dominio != "outlook.com") {
+
+            throw std::invalid_argument("Dominio do email invalido");
+        }
+
+        this->email = novo_email; ///< Atribui o novo email
     }
+    catch (const std::exception& e) {
+        std::cout << "Email deve estar no formato: usuario@dominio.com" << std::endl
+        << "Dominios aceitos:" << std::endl
+        << "    - 'gmail.com'" << std::endl
+        << "    - 'yahoo.com'" << std::endl
+        << "    - 'outlook.com'" << std::endl;
 
-    // Verifica se o dominio esta preenchido corretamente
-    if (dominio != "gmail.com" && dominio != "yahoo.com" && dominio != "outlook.com") {
-        // dominio invalido
+        handleExcecao(e);
     }
-
-    // Atribui o novo email
-    this->email = novo_email;
 }

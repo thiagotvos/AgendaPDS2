@@ -1,13 +1,9 @@
 #include "Tarefa.hpp"
+#include "Exceções.hpp"
 #include <iostream>
 #include <sstream>
 #include <chrono>
 #include <ctime>
-#include <stdexcept>
-
-void handleExcecao(const std::exception& e) {
-    std::cerr << "Erro: " << e.what() << std::endl;
-}
 
 std::string Tarefa::getTitulo() const {
 
@@ -64,7 +60,7 @@ void Tarefa::setDescricao(const std::string& novaDescricao) {
     }
     catch (const std::exception& e) {
         
-        std::cout << "Descricao deve possuir entre 1 e  120 caracteres" << std::endl;
+        std::cout << "Descricao deve possuir entre 1 e 120 caracteres" << std::endl;
         
         handleExcecao(e);
     }
@@ -123,8 +119,6 @@ void Tarefa::setData(const std::string& novaData) {
     }
     catch (const std::exception& e) {
     
-        std::cerr << "Erro desconhecido." << std::endl;
-        
         handleExcecao(e);
     }
 }
@@ -143,7 +137,10 @@ void Tarefa::setPrioridade(const unsigned novaPrioridade) {
     }
     catch (const std::exception& e) {
 
-        std::cout << "A prioridade deve ser: '1', '2' ou '3'. (1 sendo o menos importante)" << std::endl;
+        std::cout << "A prioridade deve ser: " << std::endl
+        << "    - '1' para menos importante" << std::endl
+        << "    - '2' para importante" << std::endl
+        << "    - '3' para mais importante" << std::endl;
         
         handleExcecao(e);
     }
@@ -164,8 +161,11 @@ void Tarefa::setEstado(const std::string& novoEstado) {
     }
     catch (const std::exception& e) {
 
-        std::cout << "O estado deve ser: 'feito', 'em progresso' ou 'nao feito'" << std::endl;
-        
+        std::cout << "O estado deve ser: " << std::endl
+        << "    - 'feito'" << std::endl 
+        << "    - 'em progresso'" << std::endl 
+        << "    - 'nao feito'" << std::endl;
+
         handleExcecao(e);
     }    
 }
