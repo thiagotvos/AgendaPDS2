@@ -91,3 +91,47 @@ private:
   std::string local; ///< Armazena o local do compromisso
   std::string horario; ///< Armazena o horario do comprimisso
 };
+
+class ListaTarefa {
+public:
+  ListaTarefa();
+  ~ListaTarefa();
+
+  /// @brief Adiciona uma tarefa na lista de tarefas
+  ///
+  /// @param tarefa a tarefa a ser adicionada
+  void adicionarTarefa(Tarefa* tarefa);
+
+  /// @brief Remove uma tarefa da lista de tarefas
+  ///
+  /// @param tarefa a Tarefa a ser removida
+  void removerTarefa(Tarefa* tarefa);
+
+  /// @brief Mostra a lista de tarefas
+  void verTarefas();
+  
+private:
+  std::list<Tarefa> listadeTarefa; ///< Armazena a lista de tarefas
+};
+
+class ListaCompromisso {
+public:
+  ListaCompromisso();
+  ~ListaCompromisso();
+
+  /// @brief Adiciona um compromisso a lista de compromissos
+  ///
+  /// @param compromisso O compromisso a ser adicionado.
+  void adicionarCompromisso(Compromisso* compromisso);
+
+  /// @brief Remove um compromisso da lista de compromissos
+  ///
+  /// @param compromisso O compromisso a ser removido.
+  void removerCompromisso(Compromisso* compromisso);
+
+  /// @brief Mostra os compromisso da lista de compromissos
+  void verCompromissos();
+
+private:
+    std::list<Compromisso> listadeCompromisso; ///< Armazena a lista de comprimissos
+};
