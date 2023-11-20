@@ -8,7 +8,10 @@
     
      std::string getnome() const;
      std::string getemail() const; 
-
+    
+    /// @brief Muda o email de um usuario
+    ///
+    /// @param texto       o Email a ser alterado
      void mudaremail (std::string texto);
       
   private:
