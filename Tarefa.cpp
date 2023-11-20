@@ -5,6 +5,10 @@
 #include <ctime>
 #include <stdexcept>
 
+void handleExcecao(const std::exception& e) {
+    std::cerr << "Erro: " << e.what() << std::endl;
+}
+
 std::string Tarefa::getTitulo() const {
 
     return this->titulo; ///< Retorna o titulo
@@ -35,14 +39,11 @@ void Tarefa::setTitulo(const std::string& novoTitulo) {
             throw std::invalid_argument("Titulo invalido");
         }
     } 
-    catch (const std::invalid_argument& e) {
+    catch (const std::exception& e) {
         
         std::cout << "Titulo deve possuir entre 1 e 50 caracteres" << std::endl;
-        std::cerr << "Erro: " << e.what() << std::endl;
-    }
-    catch (...) {
-    
-        std::cerr << "Erro desconhecido." << std::endl; ///< Captura qualquer exceção não prevista
+        
+        handleExcecao(e);
     }
 }
 
@@ -61,14 +62,11 @@ void Tarefa::setDescricao(const std::string& novaDescricao) {
             throw std::invalid_argument("Descricao invalida");
         }
     }
-    catch (const std::invalid_argument& e) {
+    catch (const std::exception& e) {
         
         std::cout << "Descricao deve possuir entre 1 e  120 caracteres" << std::endl;
-        std::cerr << "Erro: " << e.what() << std::endl;
-    }
-    catch (...) {
-    
-        std::cerr << "Erro desconhecido." << std::endl; ///< Captura qualquer exceção não prevista
+        
+        handleExcecao(e);
     }
 }
 
@@ -114,16 +112,20 @@ void Tarefa::setData(const std::string& novaData) {
     catch (const std::invalid_argument& e) {
         
         std::cout << "Data deve estar no formato DD/MM/AAAA" << std::endl;
-        std::cerr << "Erro: " << e.what() << std::endl;
+        
+        handleExcecao(e);
     }
     catch (const std::logic_error& e) {
 
         std::cout << "Impossivel adicionar uma tarefa ou compromisso para datas anteriores a atual" << std::endl;
-        std::cerr << "Erro: " << e.what() << std::endl;
+        
+        handleExcecao(e);
     }
-    catch (...) {
+    catch (const std::exception& e) {
     
-        std::cerr << "Erro desconhecido." << std::endl; ///< Captura qualquer exceção não prevista
+        std::cerr << "Erro desconhecido." << std::endl;
+        
+        handleExcecao(e);
     }
 }
 
@@ -139,14 +141,11 @@ void Tarefa::setPrioridade(const unsigned novaPrioridade) {
             throw std::invalid_argument("Prioridade invalida");
         }
     }
-    catch (const std::invalid_argument& e) {
+    catch (const std::exception& e) {
 
         std::cout << "A prioridade deve ser: '1', '2' ou '3'. (1 sendo o menos importante)" << std::endl;
-        std::cerr <<"Erro: " << e.what() << std::endl;
-    }
-    catch (...) {
-    
-        std::cerr << "Erro desconhecido." << std::endl; ///< Captura qualquer exceção não prevista
+        
+        handleExcecao(e);
     }
 }
 
@@ -163,13 +162,10 @@ void Tarefa::setEstado(const std::string& novoEstado) {
             throw std::invalid_argument("Estado invalido");
         }
     }
-    catch (const std::invalid_argument& e) {
+    catch (const std::exception& e) {
 
         std::cout << "O estado deve ser: 'feito', 'em progresso' ou 'nao feito'" << std::endl;
-        std::cerr << "Erro: " << e.what() << std::endl;
-    }
-    catch (...) {
-    
-        std::cerr << "Erro desconhecido." << std::endl; ///< Captura qualquer exceção não prevista
+        
+        handleExcecao(e);
     }    
 }
