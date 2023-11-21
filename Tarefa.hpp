@@ -1,7 +1,16 @@
 #pragma once
 #include <string>
 #include <list>
-   
+
+/// @brief Obtem a cor para imprimir de acordo com o nivel de prioridade
+///
+/// @details Prioridade 1: Verde, Prioridade 2: Amarelo, Prioridade 3: Vermelho
+///
+/// @param prioridade A prioridade da tarefa ou compromisso
+///
+/// @return String com o codigo em formataçao ANSI da cor
+std::string setCorPrioridade(unsigned prioridade);
+
 class Tarefa {
 public:
   Tarefa(std::string& titulo, std::string& descricao, std::string& data, unsigned prioridade, std::string& estado);

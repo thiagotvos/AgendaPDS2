@@ -295,6 +295,30 @@ void Compromisso::setHorario(const std::string& novoHorario) {
     }
 }
 
+std::string setCorPrioridade(unsigned prioridade) {
+
+    // Escolher a cor com base na prioridade
+    std::string cor;
+        
+    switch (prioridade) {
+        case 1:
+            cor = "\033[32m"; // Verde (prioridade 1)
+            return cor;
+
+        case 2:
+            cor = "\033[33m"; // Amarelo (prioridade 2)
+            return cor;
+
+        case 3:
+            cor = "\033[31m"; // Vermelho (prioridade 3)
+            return cor;
+
+        default:
+            cor = "\033[0m"; // Padrão (sem cor)
+            return cor;
+    }
+}
+
 void ListaTarefa::adicionarTarefa(Tarefa* tarefa) {
     
     listadeTarefa.push_back(*tarefa); ///< Adicionando a tarefa na lista
@@ -310,6 +334,14 @@ void ListaTarefa::verTarefas() const {
     /// Imprime as tarefas atuais da lista
     for (const auto& tarefa : listadeTarefa) {
         
+        /// Obtem a prioridade
+        unsigned prioridade = tarefa.getPrioridade();
+
+        /// Obtem a cor
+        std::string cor = setCorPrioridade(prioridade);
+
+        std::cout << cor;
+        
         std::cout << "----------" << std::endl;
 
         std::cout << "Titulo: " << tarefa.getTitulo() << std::endl;
@@ -320,7 +352,9 @@ void ListaTarefa::verTarefas() const {
 
         std::cout << "Prioridade: " << tarefa.getPrioridade() << std::endl;
 
-        std::cout << "Estado: " << tarefa.getEstado() << std::endl
+        std::cout << "Estado: " << tarefa.getEstado() << std::endl;
+
+        std::cout << "\033[0m" ///< Restaura a cor padrao
 
         << std::endl;        
     }
@@ -340,6 +374,12 @@ void ListaCompromisso::verCompromissos() const {
 
     /// Imprime os compromissos atuais da lista
     for (const auto& compromisso : listadeCompromisso) {
+     
+        /// Obtem a prioridade
+        unsigned prioridade = compromisso.getPrioridade();
+
+        /// Obtem a cor
+        std::string cor = setCorPrioridade(prioridade);
         
         std::cout << "----------" << std::endl;
 
@@ -353,7 +393,9 @@ void ListaCompromisso::verCompromissos() const {
 
         std::cout << "Prioridade: " << compromisso.getPrioridade() << std::endl;
 
-        std::cout << "Estado: " << compromisso.getEstado() << std::endl
+        std::cout << "Estado: " << compromisso.getEstado() << std::endl;
+
+        std::cout << "\033[0m" ///< Restaura a cor padrao
 
         << std::endl;        
     }
