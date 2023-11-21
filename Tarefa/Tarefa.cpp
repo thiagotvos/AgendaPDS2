@@ -435,7 +435,7 @@ void ListaCompromisso::verCompromissos() const {
         << "Titulo: " << compromisso.getTitulo() << std::endl;
 
         /// Verifica se o compromisso tem uma cor definida pelo usuario
-        /// Se nao tem, volta para a cor padrao 
+        /// Se nao tem, volta para a cor padrao do texto
         if (!cor_compromisso.empty()) {
 
             std::cout << cor_compromisso; ///< Muda a cor do texto para a cor escolhida pelo usuario

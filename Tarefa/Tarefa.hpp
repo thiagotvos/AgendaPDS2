@@ -8,7 +8,7 @@
 ///
 /// @param prioridade A prioridade da tarefa ou compromisso
 ///
-/// @return String com o codigo em formataçao ANSI da cor
+/// @return String com o codigo da cor (em formataçao ANSI) 
 std::string setCorPrioridade(unsigned prioridade);
 
 class Tarefa {
