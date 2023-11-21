@@ -84,6 +84,11 @@ class Compromisso : public Tarefa {
 public:
   Compromisso(std::string& data, std::string& local,std::string& titulo, std::string& descricao, std::string& horario, std::string& estado);
 
+  /// @brief Busca pela cor do compromisso
+  ///
+  /// @return String com o codigo em formataçao ANSI da cor
+  std::string getCor() const;
+
   /// @brief Busca pelo local do compromisso
   ///
   /// @return String do local  
@@ -93,6 +98,15 @@ public:
   ///
   /// @return String do horario 
   std::string getHorario() const;
+
+  /// @brief Muda a cor de um compromisso
+  ///
+  /// @details Necessario para organizaçao dos compromissos por cor
+  ///
+  /// @attention Cores aceitas: 'laranja', 'azul', 'roxo', 'rosa'
+  ///
+  /// @param novaCor A nova cor a ser adicionada
+  void setCor(const std::string& novaCor);
 
   /// @brief Muda o local de um compromisso
   ///
@@ -107,6 +121,7 @@ public:
   void setHorario(const std::string& novoHorario);
 
 private:
+  std::string cor; ///< Armazena a cor do comprimisso, escolhida pelo usuario
   std::string local; ///< Armazena o local do compromisso
   std::string horario; ///< Armazena o horario do comprimisso
 };

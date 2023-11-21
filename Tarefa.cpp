@@ -180,6 +180,11 @@ void Tarefa::setEstado(const std::string& novoEstado) {
     }    
 }
 
+std::string Compromisso::getCor() const {
+
+    return this->cor; ///< Retorna a cor
+}
+
 std::string Compromisso::getLocal() const {
 
     return this->local; ///< Retorna o local
@@ -188,6 +193,46 @@ std::string Compromisso::getLocal() const {
 std::string Compromisso::getHorario() const {
 
     return this->horario; ///< Retorna o horario
+}
+
+void Compromisso::setCor(const std::string& novaCor) {
+
+    try {
+
+        // Escolher a cor com base na prioridade
+        std::string cor;
+        
+        if (novaCor == "laranja") {
+
+            this->cor = "\033[38;2;247;99;25m"; ///< Atribui a cor laranja
+        }
+        else if (novaCor == "azul") {
+
+            this->cor = "\033[38;2;25;84;247m"; ///< Atribui a cor azul
+        }
+        else if (novaCor == "roxo") {
+
+            this->cor = "\033[38;2;140;25;247m"; ///< Atribui a cor roxa
+        }
+        else if (novaCor == "rosa") {
+
+            this->cor = "\033[38;2;247;25;180m"; ///< Atribui a cor rosa
+        }
+        else if (!novaCor.empty()) {
+
+            throw std::invalid_argument("Cor invalida");
+        }
+    }
+    catch (std::exception& e) {
+
+        std::cout << "Cores aceitas:" << std::endl
+        << "    - 'laranja'" << std::endl
+        << "    - 'azul'" << std::endl
+        << "    - 'roxo'" << std::endl
+        << "    - 'rosa'" << std::endl;
+
+        handleExcecao(e);
+    }
 }
 
 void Compromisso::setLocal(const std::string& novoLocal) {
@@ -302,15 +347,15 @@ std::string setCorPrioridade(unsigned prioridade) {
         
     switch (prioridade) {
         case 1:
-            cor = "\033[32m"; // Verde (prioridade 1)
+            cor = "\033[38;2;29;247;25m"; // Verde (prioridade 1)
             return cor;
 
         case 2:
-            cor = "\033[33m"; // Amarelo (prioridade 2)
+            cor = "\033[38;2;247;228;25m"; // Amarelo (prioridade 2)
             return cor;
 
         case 3:
-            cor = "\033[31m"; // Vermelho (prioridade 3)
+            cor = "\033[38;2;247;25;25m"; // Vermelho (prioridade 3)
             return cor;
 
         default:
@@ -340,21 +385,21 @@ void ListaTarefa::verTarefas() const {
         /// Obtem a cor
         std::string cor = setCorPrioridade(prioridade);
         
-        std::cout << "----------" << std::endl;
+        std::cout << "----------" << std::endl
 
-        std::cout << cor;
+        << cor
+
+        << "Titulo: " << tarefa.getTitulo() << std::endl
+
+        << "\033[0m" ///< Restaura a cor padrao do texto
         
-        std::cout << "Titulo: " << tarefa.getTitulo() << std::endl;
-
-        std::cout << "\033[0m"; ///< Restaura a cor padrao do texto
+        << "Descriçao: " << tarefa.getDescricao() << std::endl
         
-        std::cout << "Descriçao: " << tarefa.getDescricao() << std::endl;
+        << "Data: " << tarefa.getData() << std::endl
 
-        std::cout << "Data: " << tarefa.getData() << std::endl;
-
-        std::cout << "Prioridade: " << tarefa.getPrioridade() << std::endl;
-
-        std::cout << "Estado: " << tarefa.getEstado() << std::endl
+        << "Prioridade: " << tarefa.getPrioridade() << std::endl
+        
+        << "Estado: " << tarefa.getEstado() << std::endl
 
         << std::endl;        
     }
@@ -379,25 +424,38 @@ void ListaCompromisso::verCompromissos() const {
         unsigned prioridade = compromisso.getPrioridade();
 
         /// Obtem a cor
-        std::string cor = setCorPrioridade(prioridade);
+        std::string cor_prioridade = setCorPrioridade(prioridade);
+
+        std::string cor_compromisso = compromisso.getCor();
         
-        std::cout << "----------" << std::endl;
+        std::cout << "----------" << std::endl
 
-        std::cout << cor; ///< Muda a cor do texto, de acordo com a prioridade
+        << cor_prioridade ///< Muda a cor do texto, de acordo com a prioridade
         
-        std::cout << "Titulo: " << compromisso.getTitulo() << std::endl;
+        << "Titulo: " << compromisso.getTitulo() << std::endl;
 
-        std::cout << "\033[0m"; ///< Restaura a cor padrao do texto
+        /// Verifica se o compromisso tem uma cor definida pelo usuario
+        /// Se nao tem, volta para a cor padrao 
+        if (!cor_compromisso.empty()) {
+
+            std::cout << cor_compromisso; ///< Muda a cor do texto para a cor escolhida pelo usuario
+        }
+        else {
+
+            std::cout << "\033[0m"; ///< Restaura a cor padrao do texto
+        }
         
-        std::cout << "Descriçao: " << compromisso.getDescricao() << std::endl;
+        std::cout << "Descriçao: " << compromisso.getDescricao() << std::endl
+        
+        << "Data: " << compromisso.getData() << ", às " << compromisso.getHorario() << std::endl
+        
+        << "Local: " << compromisso.getLocal() << std::endl
+        
+        << "Prioridade: " << compromisso.getPrioridade() << std::endl
 
-        std::cout << "Data: " << compromisso.getData() << ", às " << compromisso.getHorario() << std::endl;
-
-        std::cout << "Local: " << compromisso.getLocal() << std::endl;
-
-        std::cout << "Prioridade: " << compromisso.getPrioridade() << std::endl;
-
-        std::cout << "Estado: " << compromisso.getEstado() << std::endl
+        << "Estado: " << compromisso.getEstado() << std::endl
+        
+        << "\033[0m" ///< Restaura a cor padrao do texto
 
         << std::endl;        
     }
