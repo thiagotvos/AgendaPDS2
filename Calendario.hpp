@@ -3,8 +3,8 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "Tarefa.hpp"
-#include "Lembrete.hpp"
+#include "Tarefa/Tarefa.hpp"
+#include "Lembrete/Lembrete.hpp"
 
 class Calendario {
 public:
