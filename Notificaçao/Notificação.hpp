@@ -9,6 +9,7 @@ class Notificacao {
 public:
     Notificacao(const int AntecedenciaMinutos,const int AntecedenciaHoras);
     
+    /*
     /// @brief Busca pelos minutos de antecedencia da notificaçao 
     ///
     /// @return Inteiro com os minutos
@@ -32,23 +33,30 @@ public:
     ///
     /// @attention NovaAntecedencia deve variar entre: 1 e 23 horas
     void setAntecedenciaHoras(int NovaAntecedencia);
+    */
 
+    /*
     /// @brief Compara com o horario real e notifica uma tarefa no horario programado
     ///
     /// @param tarefa A tarefa a ser notificada
     void notificarTarefa(Tarefa* tarefa);
+    */
     
     /// @brief Compara com o horario real e notifica um compromisso no horario programado
     ///
     /// @param compromisso O compromisso a ser notificado
-    void notificarCompromisso(Compromisso* compromisso);
+    void notificar(Compromisso* compromisso);
     
     /// @brief Compara com o horario real e notifica um lembrete no horario programado
     ///
     /// @param lembrete O lembrete a ser notificado
-    void notificarLembrete(Lembrete* lembrete);
+    void notificar(Lembrete* lembrete);
+
+    /// @brief Desativa uma notificação
+    void desativarNotificacao();
 
 private:
-    int AntecedenciaMinutos; ///< Armazena os minutos de antecedencia da notificaçao (1 a 59) 
-    int AntecedenciaHoras; ///< Armazena as horas de antecedencia da notificaçao (1 a 23)
+    int _AntecedenciaMinutos; ///< Armazena os minutos de antecedencia da notificaçao (1 a 59) 
+    int _AntecedenciaHoras; ///< Armazena as horas de antecedencia da notificaçao (1 a 23)
+    bool _estado; ///< Armazena o estado da notificação (ativada = true, desativada = false)
 };
