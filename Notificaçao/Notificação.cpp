@@ -22,7 +22,6 @@ void Notificacao::notificar(Compromisso* compromisso) {
     int hora = horarioLocal->tm_hour;
     int min  = horarioLocal->tm_min;
 
-
     if (_estado && compromisso->hora - _AntecedenciaHoras == hora && compromisso->minutos - _AntecedenciaMinutos == min) {
         cout << compromisso->descricao << " Daqui a: " << AntecedenciaHoras << "h e " << AntecedenciaMinutos << "min" << endl;
     }
@@ -36,7 +35,6 @@ void Notificacao::notificar(Lembrete* lembrete) {
 
     int hora = horarioLocal->tm_hour;
     int min  = horarioLocal->tm_min;
-
 
     if (_estado && lembrete->hora - _AntecedenciaHoras == hora && lembrete->minutos - _AntecedenciaMinutos == min) {
         cout << lembrete->mensagem << " Daqui a: " << AntecedenciaHoras << "h e " << AntecedenciaMinutos << "min" << endl;
