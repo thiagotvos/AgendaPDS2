@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 
-
 class PrimeiroMenu {
 public:
   /// @brief Destrutor para destruiçao de subclasses
