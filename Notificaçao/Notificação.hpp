@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "Tarefa.hpp"
-#include "Lembrete.hpp"
+#include "../Tarefa/Tarefa.hpp"
+#include "../Lembrete/Lembrete.hpp"
 #include <ctime>
 #include <chrono>
 
