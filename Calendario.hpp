@@ -10,10 +10,9 @@ class Calendario {
 public:
     Calendario();  
 
-    /// @brief Imprime o calendário da semana atual 
+    /// @brief Imprime o calendario da semana atual 
     void imprimirCalendario() const;
+
 private:
-    
-    /// @brief Mapa para armazenar eventos por dia e horário
-    std::map<std::string, std::map<std::string, std::vector<std::string>>> agenda;
+    std::map<std::string, std::map<std::string, std::vector<std::string>>> agenda; ///< Mapa para armazenar eventos por dia e horario
 };

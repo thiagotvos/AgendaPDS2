@@ -26,9 +26,9 @@ public:
   /// @param novoTitulo O novo titulo a ser colocado
   void setTitulo(const std::string& novoTitulo);
 
-  /// @brief Muda a descrição de uma tarefa
+  /// @brief Muda a descriçao de uma tarefa
   ///
-  /// @param novaDescricao A nova descrição a ser colocada
+  /// @param novaDescricao A nova descriçao a ser colocada
   void setDescricao(const std::string& novaDescricao);
 
   /// @brief Muda a data de uma tarefa
@@ -121,17 +121,18 @@ public:
 
   /// @brief Adiciona um compromisso a lista de compromissos
   ///
-  /// @param compromisso O compromisso a ser adicionado.
+  /// @param compromisso O compromisso a ser adicionado
   void adicionarCompromisso(Compromisso* compromisso);
 
   /// @brief Remove um compromisso da lista de compromissos
   ///
-  /// @param compromisso O compromisso a ser removido.
+  /// @param compromisso O compromisso a ser removido
   void removerCompromisso(Compromisso* compromisso);
 
   /// @brief Mostra os compromisso da lista de compromissos
   void verCompromissos();
 
 private:
+
     std::list<Compromisso> listadeCompromisso; ///< Armazena a lista de comprimissos
 };

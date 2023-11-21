@@ -1,6 +1,6 @@
 #include <stdexcept>
 
-/// @brief Lida com as exceções geradas pelo programa
+/// @brief Lida com as exceçoes geradas pelo programa
 ///
-/// @param e Objeto da exceção lançado pelo codigo 
+/// @param e Objeto da exceçao lançado pelo codigo 
 void handleExcecao(const std::exception& e);

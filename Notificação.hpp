@@ -9,47 +9,46 @@ class Notificacao {
 public:
     Notificacao(const int AntecedenciaMinutos,const int AntecedenciaHoras);
     
+    /// @brief Busca pelos minutos de antecedencia da notificaçao 
+    ///
+    /// @return Inteiro com os minutos
     int getAntecedenciaMinutos() const;
+
+    /// @brief Busca pelas horas de antecedencia da notificaçao
+    ///
+    /// @return Inteiro com as horas 
     int getAntecedenciaHoras() const;
 
-    /// @brief Muda a antecedência, em minutos, de uma notificação
+    /// @brief Muda a antecedencia, em minutos, de uma notificaçao
     ///
-    /// @param NovaAntecedencia       A antecedência a ser alterada
+    /// @param NovaAntecedencia A antecedencia a ser alterada
     ///
-    /// @attetion NovaAntecedencia deve variar entre:
-    /// 1 e 59 minutos.
+    /// @attention NovaAntecedencia deve variar entre: 1 e 59 minutos.
     void setAntecedenciaMinutos(int NovaAntecedencia);
     
-    /// @brief Muda a antecedência, em horas, de uma notificação
+    /// @brief Muda a antecedencia, em horas, de uma notificaçao
     ///
-    /// @param NovaAntecedencia       A antecedência a ser alterada
+    /// @param NovaAntecedencia A antecedência a ser alterada
     ///
-    /// @attetion NovaAntecedencia deve variar entre:
-    /// 1 e 23 horas.
+    /// @attention NovaAntecedencia deve variar entre: 1 e 23 horas
     void setAntecedenciaHoras(int NovaAntecedencia);
 
-    /// @brief Compara com o horário real e notifica uma Tarefa
-    ///com o tempo de antecedência ou no horário programado.
+    /// @brief Compara com o horario real e notifica uma tarefa no horario programado
     ///
-    /// @param tarefa       A tarefa a ser notificada.
+    /// @param tarefa A tarefa a ser notificada
     void notificarTarefa(Tarefa* tarefa);
     
-    /// @brief Compara com o horário real e notifica um Compromisso
-    ///com o tempo de antecedência ou no horário programado.
+    /// @brief Compara com o horario real e notifica um compromisso no horario programado
     ///
-    /// @param compromisso       O compromisso a ser notificado.
+    /// @param compromisso O compromisso a ser notificado
     void notificarCompromisso(Compromisso* compromisso);
     
-    /// @brief Compara com o horário real e notifica um Lembrete
-    ///com o tempo de antecedência ou no horário programado.
+    /// @brief Compara com o horario real e notifica um lembrete no horario programado
     ///
-    /// @param lembrete       O lembrete a ser notificado.
+    /// @param lembrete O lembrete a ser notificado
     void notificarLembrete(Lembrete* lembrete);
 
 private:
-    int AntecedenciaMinutos;
-    // de 1 a 59 min 
-    int AntecedenciaHoras;
-    // de 1 a 23 horas
+    int AntecedenciaMinutos; ///< Armazena os minutos de antecedencia da notificaçao (1 a 59) 
+    int AntecedenciaHoras; ///< Armazena as horas de antecedencia da notificaçao (1 a 23)
 };
-

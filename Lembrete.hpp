@@ -6,35 +6,39 @@ class Lembrete {
 public:
     Lembrete(const std::string& horario, const std::string& mensagem, const std::string& data);
 
+    /// @brief Busca pela data do lembrete
+    ///
+    /// @return String da data 
     std::string getdata() const;
+    
+    /// @brief Busca pelo horario do lembrete
+    ///
+    /// @return String do horario
     std::string gethorario() const;
     
-    ///@brief Adiciona/Altera uma mensagem especifica de um lembrete
+    /// @brief Adiciona/Altera uma mensagem especifica de um lembrete
     ///
-    /// @param texto        Amensagem a ser mudada/adicionada
+    /// @param texto A mensagem a ser mudada/adicionada
     void alterarMensagem (std::string texto);
     
-
 private:
-    std::string data;
-    std::string horario;
-    std::string mensagem;
+    std::string data; ///< Armazena a data do lembrete
+    std::string horario; ///< Armazena o horario do lembrete
+    std::string mensagem; ///< Armazena a mensagem do lembrete
 };
 
 class ListaLembrete {
 public:
-    ///@brief Adiciona um Lembrete a lista de Lembretes
+    /// @brief Adiciona um Lembrete a lista de Lembretes
     ///
-    /// @param lembrete   O Lembrete a ser adicionado
+    /// @param lembrete O lembrete a ser adicionado
     void adicionarLembrete(Lembrete* lembrete);
     
-    ///@brief Remove um Lembrete da lista de Lembretes
+    /// @brief Remove um lembrete da lista
     ///
-    /// @param lembrete   O Lembrete a ser removido
+    /// @param lembrete O lembrete a ser removido
     void removerLembrete(Lembrete* lembrete);
     
-
 private:
-    std::list<Lembrete> listadeLembretes;
-
+    std::list<Lembrete> listadeLembretes; ///< Armazena todos os lembretes ativos
 };
