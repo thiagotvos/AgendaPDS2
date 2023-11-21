@@ -10,6 +10,16 @@ std::string Tarefa::getTitulo() const {
     return this->titulo; ///< Retorna o titulo
 }
 
+std::string Tarefa::getDescricao() const {
+
+    return this->descricao; ///< Retorna a descriçao
+}
+
+std::string Tarefa::getData() const {
+
+    return this->data; ///< Retorna a data
+}
+
 unsigned Tarefa::getPrioridade() const {
 
     return this->prioridade; ///< Retorna a prioridade
@@ -168,4 +178,183 @@ void Tarefa::setEstado(const std::string& novoEstado) {
 
         handleExcecao(e);
     }    
+}
+
+std::string Compromisso::getLocal() const {
+
+    return this->local; ///< Retorna o local
+}
+
+std::string Compromisso::getHorario() const {
+
+    return this->horario; ///< Retorna o horario
+}
+
+void Compromisso::setLocal(const std::string& novoLocal) {
+
+    try {
+        const size_t MAX_CARACTERES = 100; ///< Limite de caracteres para o novo local
+
+        /// Verifica se o novo local eh valido
+        if (!novoLocal.length() >= MAX_CARACTERES || !novoLocal.empty()) {
+
+            this->local = novoLocal; ///< Atribui o novo local
+        }
+        else {
+
+            throw std::invalid_argument("Local invalido");
+        }
+    } 
+    catch (const std::exception& e) {
+        
+        std::cout << "Local deve possuir entre 1 e 100 caracteres" << std::endl;
+        
+        handleExcecao(e);
+    }
+}
+
+void Compromisso::setHorario(const std::string& novoHorario) {
+
+        try {
+        /// Verifica o formato do novo horario
+        std::istringstream iss(novoHorario);
+        int HH, MM, SS;
+        char limitador; ///< Limitador deve ser ':'
+
+        if (!(iss >> HH >> limitador >> MM >> limitador >> SS) || limitador != ':') {
+            
+            throw std::invalid_argument("Formato do horario invalido");
+        }
+
+        /// Obtem a data do compromisso
+        std::string data_compromisso = getData();
+
+        if (!data_compromisso.empty()) {
+            
+            std::istringstream iss(data_compromisso);
+            int dia, mes, ano;
+            char limitador; ///< Limitador deve ser '/'
+
+            iss >> HH >> limitador >> MM >> limitador >> SS;
+
+            // Cria uma representacao da data do compromisso
+            std::tm tmDataCompromisso = {0}; ///< Inicializa o struct da data 
+            
+            tmDataCompromisso.tm_mday = dia; ///< Atribui o dia da data
+            
+            tmDataCompromisso.tm_mon = mes - 1; ///< Atribui o mes da data (os meses são de 0 a 11)
+            
+            tmDataCompromisso.tm_year = ano - 1900; ///< Atribui o ano da data (os anos sao contados a partir de 1900)
+
+            tmDataCompromisso.tm_hour = HH; ///< Atribui a nova hora do compromisso
+
+            tmDataCompromisso.tm_min = MM; ///< Atribui os novos minutos do compromisso
+
+            tmDataCompromisso.tm_sec = SS; ///< Atribui os novos segundos do compromisso
+
+            /// Converte a data de time_t para time_point
+            auto timepoint_data_compromisso = std::chrono::system_clock::from_time_t(std::mktime(&tmDataCompromisso));
+
+            /// Obtem a data atual do sistema
+            auto timepoint_agora = std::chrono::system_clock::now();
+
+            /// Converte time_point para time_t
+            std::time_t time_t_agora = std::chrono::system_clock::to_time_t(timepoint_agora);
+    
+            /// Converte time_t para uma struct tm
+            struct std::tm* tmAtual = std::localtime(&time_t_agora);
+
+            // Verifica se o novo horario eh no dia
+            if (timepoint_data_compromisso <= timepoint_agora) {
+        
+                throw std::logic_error("Horario no passado");
+            }
+
+            this->horario = novoHorario; ///< Atribui o novo horario
+        }
+        else {
+
+            this->horario = novoHorario; ///< Atribui o novo horario
+        }
+    }
+    catch (const std::invalid_argument& e) {
+        
+        std::cout << "Horario deve estar no formato HH:MM:SS" << std::endl;
+        
+        handleExcecao(e);
+    }
+    catch (const std::logic_error& e) {
+
+        std::cout << "Impossivel adicionar uma tarefa ou compromisso para datas anteriores a atual" << std::endl;
+        
+        handleExcecao(e);
+    }
+    catch (const std::exception& e) {
+    
+        handleExcecao(e);
+    }
+}
+
+void ListaTarefa::adicionarTarefa(Tarefa* tarefa) {
+    
+    listadeTarefa.push_back(*tarefa); ///< Adicionando a tarefa na lista
+}
+
+void ListaTarefa::removerTarefa(Tarefa* tarefa) {
+
+    listadeTarefa.remove(*tarefa); ///< Removendo a tarefa da lista
+}
+
+void ListaTarefa::verTarefas() const {
+    
+    /// Imprime as tarefas atuais da lista
+    for (const auto& tarefa : listadeTarefa) {
+        
+        std::cout << "----------" << std::endl;
+
+        std::cout << "Titulo: " << tarefa.getTitulo() << std::endl;
+        
+        std::cout << "Descriçao: " << tarefa.getDescricao() << std::endl;
+
+        std::cout << "Data: " << tarefa.getData() << std::endl;
+
+        std::cout << "Prioridade: " << tarefa.getPrioridade() << std::endl;
+
+        std::cout << "Estado: " << tarefa.getEstado() << std::endl
+
+        << std::endl;        
+    }
+}
+
+void ListaCompromisso::adicionarCompromisso(Compromisso* compromisso) {
+    
+    listadeCompromisso.push_back(*compromisso); ///< Adicionando o compromisso na lista
+}
+
+void ListaCompromisso::removerCompromisso(Compromisso* compromisso) {
+
+    listadeCompromisso.remove(*compromisso); ///< Removendo o compromisso da lista
+}
+
+void ListaCompromisso::verCompromissos() const {
+
+    /// Imprime os compromissos atuais da lista
+    for (const auto& compromisso : listadeCompromisso) {
+        
+        std::cout << "----------" << std::endl;
+
+        std::cout << "Titulo: " << compromisso.getTitulo() << std::endl;
+        
+        std::cout << "Descriçao: " << compromisso.getDescricao() << std::endl;
+
+        std::cout << "Data: " << compromisso.getData() << ", às " << compromisso.getHorario() << std::endl;
+
+        std::cout << "Local: " << compromisso.getLocal() << std::endl;
+
+        std::cout << "Prioridade: " << compromisso.getPrioridade() << std::endl;
+
+        std::cout << "Estado: " << compromisso.getEstado() << std::endl
+
+        << std::endl;        
+    }
 }

@@ -10,7 +10,17 @@ public:
   ///
   /// @return String do titulo
   std::string getTitulo() const;
-    
+
+  /// @brief Busca pela descriçao da tarefa
+  /// 
+  /// @return String da descriçao 
+  std::string getDescricao() const;
+
+  /// @brief Busca pela data da tarefa
+  ///
+  /// @return String da data
+  std::string getData() const;
+
   /// @brief Busca pela prioridade da tarefa
   ///
   /// @return Unsigned (1, 2 ou 3)
@@ -80,7 +90,7 @@ public:
   /// @param novoLocal O novo local a ser colocado 
   void setLocal(const std::string& novoLocal);
 
-  /// @brief Muda o horário de um compromisso
+  /// @brief Muda o horario de um compromisso
   ///
   /// @param novoHorario O novo horario a ser colocado
   ///
@@ -108,7 +118,7 @@ public:
   void removerTarefa(Tarefa* tarefa);
 
   /// @brief Mostra a lista de tarefas
-  void verTarefas();
+  void verTarefas() const;
   
 private:
   std::list<Tarefa> listadeTarefa; ///< Armazena a lista de tarefas
@@ -130,9 +140,8 @@ public:
   void removerCompromisso(Compromisso* compromisso);
 
   /// @brief Mostra os compromisso da lista de compromissos
-  void verCompromissos();
+  void verCompromissos() const;
 
 private:
-
-    std::list<Compromisso> listadeCompromisso; ///< Armazena a lista de comprimissos
+  std::list<Compromisso> listadeCompromisso; ///< Armazena a lista de comprimissos
 };
