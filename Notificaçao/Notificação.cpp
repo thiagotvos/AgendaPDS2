@@ -2,8 +2,8 @@
 #include <iostream>
 #include <ctime>
 #include "Notificação.hpp"
-#include "Tarefa/Tarefa.hpp"
-#include "Lembrete/Lembrete.hpp"
+#include "../Tarefa/Tarefa.hpp"
+#include "../Lembrete/Lembrete.hpp"
 
 using namespace std;
 
