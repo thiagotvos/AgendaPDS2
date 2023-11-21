@@ -339,12 +339,14 @@ void ListaTarefa::verTarefas() const {
 
         /// Obtem a cor
         std::string cor = setCorPrioridade(prioridade);
-
-        std::cout << cor;
         
         std::cout << "----------" << std::endl;
 
+        std::cout << cor;
+        
         std::cout << "Titulo: " << tarefa.getTitulo() << std::endl;
+
+        std::cout << "\033[0m"; ///< Restaura a cor padrao do texto
         
         std::cout << "Descriçao: " << tarefa.getDescricao() << std::endl;
 
@@ -352,9 +354,7 @@ void ListaTarefa::verTarefas() const {
 
         std::cout << "Prioridade: " << tarefa.getPrioridade() << std::endl;
 
-        std::cout << "Estado: " << tarefa.getEstado() << std::endl;
-
-        std::cout << "\033[0m" ///< Restaura a cor padrao
+        std::cout << "Estado: " << tarefa.getEstado() << std::endl
 
         << std::endl;        
     }
@@ -383,7 +383,11 @@ void ListaCompromisso::verCompromissos() const {
         
         std::cout << "----------" << std::endl;
 
+        std::cout << cor; ///< Muda a cor do texto, de acordo com a prioridade
+        
         std::cout << "Titulo: " << compromisso.getTitulo() << std::endl;
+
+        std::cout << "\033[0m"; ///< Restaura a cor padrao do texto
         
         std::cout << "Descriçao: " << compromisso.getDescricao() << std::endl;
 
@@ -393,9 +397,7 @@ void ListaCompromisso::verCompromissos() const {
 
         std::cout << "Prioridade: " << compromisso.getPrioridade() << std::endl;
 
-        std::cout << "Estado: " << compromisso.getEstado() << std::endl;
-
-        std::cout << "\033[0m" ///< Restaura a cor padrao
+        std::cout << "Estado: " << compromisso.getEstado() << std::endl
 
         << std::endl;        
     }
