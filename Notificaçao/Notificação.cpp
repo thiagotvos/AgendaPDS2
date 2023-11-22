@@ -7,40 +7,38 @@
 
 using namespace std;
 
-Notificacao::Notificacao(const int AntecedenciaMinutos,const int AntecedenciaHoras) {
-    _AntecedenciaMinutos = AntecedenciaMinutos;
-    _AntecedenciaHoras = AntecedenciaHoras;
+Notificacao::Notificacao(const int horaAntes, const int minAntes) {
+    _minAntes = minAntes;
+    _horaAntes = horaAntes;
     _estado = true;
-}
 
-void Notificacao::notificar(Compromisso* compromisso) {
     time_t timer;
     struct tm *horarioLocal;
     time(&timer); // Obtem informações de data e hora
     horarioLocal = localtime(&timer); // Converte a hora atual para a hora local
 
-    int hora = horarioLocal->tm_hour;
-    int min  = horarioLocal->tm_min;
+    _horaAtual = horarioLocal->tm_hour;
+    _minAtual = horarioLocal->tm_min;
+}
 
-    if (_estado && compromisso->hora - _AntecedenciaHoras == hora && compromisso->minutos - _AntecedenciaMinutos == min) {
-        cout << compromisso->descricao << " Daqui a: " << AntecedenciaHoras << "h e " << AntecedenciaMinutos << "min" << endl;
+void Notificacao::notificar(Compromisso* compromisso) {
+    int horaCompromisso = compromisso->getHorario()[0] + compromisso->getHorario()[1];
+    int minCompromisso = compromisso->getHorario()[3] + compromisso->getHorario()[4];
+
+    if (_estado && horaCompromisso - _horaAntes == _horaAtual && minCompromisso - _minAntes == _minAtual) {
+        cout << compromisso->getDescricao() << " Daqui a: " << _horaAntes << "h e " << _minAntes << "min" << endl;
     }
 }
 
 void Notificacao::notificar(Lembrete* lembrete) {
-    time_t timer;
-    struct tm *horarioLocal;
-    time(&timer); // Obtem informações de data e hora
-    horarioLocal = localtime(&timer); // Converte a hora atual para a hora local
+    int horaLembrete = lembrete->getHorario()[0] + lembrete->getHorario()[1];
+    int minLembrete = lembrete->getHorario()[3] + lembrete->getHorario()[4];
 
-    int hora = horarioLocal->tm_hour;
-    int min  = horarioLocal->tm_min;
-
-    if (_estado && lembrete->hora - _AntecedenciaHoras == hora && lembrete->minutos - _AntecedenciaMinutos == min) {
-        cout << lembrete->mensagem << " Daqui a: " << AntecedenciaHoras << "h e " << AntecedenciaMinutos << "min" << endl;
+    if (_estado && horaLembrete - _horaAntes == _horaAtual && minLembrete - _minAntes == _minAtual) {
+        cout << lembrete->getMensagem() << " Daqui a: " << _horaAntes << "h e " << _minAntes << "min" << endl;
     }
 }
 
 void Notificacao::desativarNotificacao() {
-    estado = false;
+    _estado = false;
 }
