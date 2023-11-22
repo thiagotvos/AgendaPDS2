@@ -14,7 +14,12 @@ public:
     /// @brief Busca pelo horario do lembrete
     ///
     /// @return String do horario
-    std::string gethorario() const;
+    std::string getHorario() const;
+
+    /// @brief Busca pela mensagem do lembrete
+    ///
+    /// @return String da mensagem
+    std::string getMensagem() const;
     
     /// @brief Adiciona/Altera uma mensagem especifica de um lembrete
     ///
@@ -22,9 +27,9 @@ public:
     void alterarMensagem (std::string texto);
     
 private:
-    std::string data; ///< Armazena a data do lembrete
-    std::string horario; ///< Armazena o horario do lembrete
-    std::string mensagem; ///< Armazena a mensagem do lembrete
+    std::string _data; ///< Armazena a data do lembrete
+    std::string _horario; ///< Armazena o horario do lembrete
+    std::string _mensagem; ///< Armazena a mensagem do lembrete
 };
 
 class ListaLembrete {
@@ -40,5 +45,5 @@ public:
     void removerLembrete(Lembrete* lembrete);
     
 private:
-    std::list<Lembrete> listadeLembretes; ///< Armazena todos os lembretes ativos
+    std::list<Lembrete> _listadeLembretes; ///< Armazena todos os lembretes ativos
 };
