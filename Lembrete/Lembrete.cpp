@@ -54,3 +54,10 @@ void ListaLembrete::removerLembrete(Lembrete* lembrete) {
 
     _listadeLembretes.remove(*lembrete); ///< Removendo o lembrete da lista
 }
+
+void ListaLembrete::verLembretes() {
+    for (const auto& lembrete : _listadeLembretes) {
+        std::cout << lembrete.getMensagem() << " " << "Data: " << lembrete.getData() << "Horario: " << lembrete.getHorario() << std::endl;
+        std::cout << "------------------------" << std::endl;
+    }
+}
