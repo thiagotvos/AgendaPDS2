@@ -7,7 +7,7 @@
 
 class Notificacao {
 public:
-    Notificacao(const int AntecedenciaMinutos,const int AntecedenciaHoras);
+    Notificacao(const int horaAntes, const int minAntes);
     
     /*
     /// @brief Busca pelos minutos de antecedencia da notificaçao 
@@ -56,7 +56,9 @@ public:
     void desativarNotificacao();
 
 private:
-    int _AntecedenciaMinutos; ///< Armazena os minutos de antecedencia da notificaçao (1 a 59) 
-    int _AntecedenciaHoras; ///< Armazena as horas de antecedencia da notificaçao (1 a 23)
+    int _minAntes; ///< Armazena os minutos de antecedencia da notificaçao (1 a 59) 
+    int _horaAntes; ///< Armazena as horas de antecedencia da notificaçao (1 a 23)
     bool _estado; ///< Armazena o estado da notificação (ativada = true, desativada = false)
+    int _minAtual; ///< Armazena os minutos atuais do computador
+    int _horaAtual; ///< Armazena as horas atuais do computador
 };
