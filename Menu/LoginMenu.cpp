@@ -1,6 +1,7 @@
 #include "Menu.hpp"
 #include "LoginMenu.hpp"
 #include "Usuario.hpp"
+#include "UsuarioMenu.hpp"
 
 #include <iostream>
 #include <string>
@@ -23,10 +24,12 @@ PrimeiroMenu *MenuLogin::next(unsigned option) {
     std::cin >> login_nome;
 
     //logica para ver se usuario existe ou não (checar email e nome na lista de usuarios)
+    
     // Ex: bool confirmarlogin( std::string login_email, std::string login_nome ) ...
 
     if ( ) { std::cout << "Logando: " << login_nome << login_email std::endl 
-              break; }
+             return new UsuarioMenu(usuario);
+           }
     // se existi --> logar (terminar a logica)
     
     else {std::cout << "Usuário não encontrado " << std::endl;
@@ -58,7 +61,7 @@ PrimeiroMenu *MenuLogin::next(unsigned option) {
 
     std::cout << "Salvando usuário" << std::endl;
 
-    break;
+    return new UsuarioMenu(usuario);
   }
   
   }
