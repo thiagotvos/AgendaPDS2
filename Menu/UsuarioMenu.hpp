@@ -10,7 +10,12 @@
 
 class UsuarioMenu : public Menu {
 public:
-  UsuarioMenu(Usuario const &Usuario);
+/// @brief Constrói um menu do Usuário.  
+UsuarioMenu(Usuario const &Usuario);
+
+  /// @brief Constrói próximo menu 
+  ///
+  /// @return O próximo menu que o usuario escolheu.
   Menu *next(unsigned option) override;
 private:
   Usuario const &_Usuario;
