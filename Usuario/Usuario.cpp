@@ -4,13 +4,20 @@
 #include <string>
 #include <sstream>
 
+Usuario::Usuario(std::string& nome, std::string& sobrenome, std::string& idade, std::string& email) {
+    _nome = nome;
+    _sobrenome = sobrenome;
+    _idade = idade;
+    _email = email;
+}
+
 std::string Usuario::getnome() const {
 
-    return this->nome; ///< Retorna o nome
+    return this->_nome; ///< Retorna o nome
 }
 std::string Usuario::getemail() const {
     
-    return this->email; ///< Retorna o email
+    return this->_email; ///< Retorna o email
 }
 
 void Usuario::mudaremail(std::string novo_email) {
@@ -34,7 +41,7 @@ void Usuario::mudaremail(std::string novo_email) {
             throw std::invalid_argument("Dominio do email invalido");
         }
 
-        this->email = novo_email; ///< Atribui o novo email
+        this->_email = novo_email; ///< Atribui o novo email
     }
     catch (const std::exception& e) {
         std::cout << "Email deve estar no formato: usuario@dominio.com" << std::endl
