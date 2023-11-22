@@ -29,10 +29,10 @@ PrimeiroMenu *UsuarioMenu::next(unsigned option) {
     // imprime os lembretes atuais 
     
     ///...
-
-    ///vai para o menu dos lembretes
-
-    break;
+     
+    return new LembreteMenu(usuario);
+    ///vai para o menu dos lembretes (a criar)
+    /// conferir se o parametro é o usuário mesmo
   }
   case 2: {
     imprimirCalendario();
@@ -43,9 +43,10 @@ PrimeiroMenu *UsuarioMenu::next(unsigned option) {
     /// imprime os Compromissos atuais 
     
     ///...
-
-    ///vai para o menu dos lembretes   
-    break;
+     
+    return new CompromissoMenu(usuario);
+    ///vai para o menu dos Compromissos (a criar)
+    /// conferir se o parametro é o usuário mesmo
   }
   case 3: {
     imprimirCalendario();
@@ -56,9 +57,9 @@ PrimeiroMenu *UsuarioMenu::next(unsigned option) {
     /// imprime as Tarefas atuais 
     
     ///...
-
-    ///vai para o menu das Tarefas   
-    break;
+     return new TarefaMenu(usuario);
+    ///vai para o menu das Tarefas (a criar) 
+    /// conferir se o parametro é o usuário mesmo
   }
   }
 
