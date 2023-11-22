@@ -73,16 +73,16 @@ public:
   void setEstado(const std::string& novoEstado);
    
 private:
-  std::string titulo; ///< Armazena o titulo da tarefa 
-  std::string descricao; ///< Armazena a descricao da tarefa
-  std::string data; ///< Armazena a data (em string) da tarefa 
-  unsigned prioridade; ///< Armazena a prioridade da tarefa 
-  std::string estado; ///< Armazena o estado da tarefa 
+  std::string _titulo; ///< Armazena o titulo da tarefa 
+  std::string _descricao; ///< Armazena a descricao da tarefa
+  std::string _data; ///< Armazena a data (em string) da tarefa 
+  unsigned _prioridade; ///< Armazena a prioridade da tarefa 
+  std::string _estado; ///< Armazena o estado da tarefa 
  };
 
 class Compromisso : public Tarefa {
 public:
-  Compromisso(std::string& data, std::string& local,std::string& titulo, std::string& descricao, std::string& horario, std::string& estado);
+  Compromisso(std::string& data, std::string& local,std::string& titulo, std::string& descricao, std::string& horario, std::string& estado, unsigned prioridade);
 
   /// @brief Busca pela cor do compromisso
   ///
@@ -121,15 +121,15 @@ public:
   void setHorario(const std::string& novoHorario);
 
 private:
-  std::string cor; ///< Armazena a cor do comprimisso, escolhida pelo usuario
-  std::string local; ///< Armazena o local do compromisso
-  std::string horario; ///< Armazena o horario do comprimisso
+  std::string _cor; ///< Armazena a cor do comprimisso, escolhida pelo usuario
+  std::string _local; ///< Armazena o local do compromisso
+  std::string _horario; ///< Armazena o horario do comprimisso
 };
 
 class ListaTarefa {
 public:
-  ListaTarefa();
-  ~ListaTarefa();
+  //ListaTarefa();
+  //~ListaTarefa();
 
   /// @brief Adiciona uma tarefa na lista de tarefas
   ///
@@ -145,13 +145,13 @@ public:
   void verTarefas() const;
   
 private:
-  std::list<Tarefa> listadeTarefa; ///< Armazena a lista de tarefas
+  std::list<Tarefa> _listadeTarefa; ///< Armazena a lista de tarefas
 };
 
 class ListaCompromisso {
 public:
-  ListaCompromisso();
-  ~ListaCompromisso();
+  //ListaCompromisso();
+  //~ListaCompromisso();
 
   /// @brief Adiciona um compromisso a lista de compromissos
   ///
@@ -167,5 +167,5 @@ public:
   void verCompromissos() const;
 
 private:
-  std::list<Compromisso> listadeCompromisso; ///< Armazena a lista de comprimissos
+  std::list<Compromisso> _listadeCompromisso; ///< Armazena a lista de comprimissos
 };
