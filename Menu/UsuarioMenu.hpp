@@ -16,7 +16,7 @@ UsuarioMenu(Usuario const &Usuario);
   /// @brief Constrói próximo menu 
   ///
   /// @return O próximo menu que o usuario escolheu.
-  Menu *next(unsigned option) override;
+  PrimeiroMenu *next(unsigned option) override;
 private:
   Usuario const &_Usuario;
 };
