@@ -5,29 +5,37 @@
 #include <chrono>
 #include <ctime>
 
+Tarefa::Tarefa(std::string& titulo, std::string& descricao, std::string& data, unsigned prioridade, std::string& estado) {
+    _titulo = titulo;
+    _descricao = descricao;
+    _data = data;
+    _prioridade = prioridade;
+    _estado = estado;
+}
+
 std::string Tarefa::getTitulo() const {
 
-    return this->titulo; ///< Retorna o titulo
+    return this->_titulo; ///< Retorna o titulo
 }
 
 std::string Tarefa::getDescricao() const {
 
-    return this->descricao; ///< Retorna a descriçao
+    return this->_descricao; ///< Retorna a descriçao
 }
 
 std::string Tarefa::getData() const {
 
-    return this->data; ///< Retorna a data
+    return this->_data; ///< Retorna a data
 }
 
 unsigned Tarefa::getPrioridade() const {
 
-    return this->prioridade; ///< Retorna a prioridade
+    return this->_prioridade; ///< Retorna a prioridade
 }
 
 std::string Tarefa::getEstado() const {
 
-    return this->estado; ///< Retorna o estado
+    return this->_estado; ///< Retorna o estado
 }
 
 void Tarefa::setTitulo(const std::string& novoTitulo) {
@@ -38,7 +46,7 @@ void Tarefa::setTitulo(const std::string& novoTitulo) {
         /// Verifica se o novo titulo eh valido
         if (!novoTitulo.length() >= MAX_CARACTERES || !novoTitulo.empty()) {
 
-            this->titulo = novoTitulo; ///< Atribui o novo titulo
+            this->_titulo = novoTitulo; ///< Atribui o novo titulo
         }
         else {
 
@@ -61,7 +69,7 @@ void Tarefa::setDescricao(const std::string& novaDescricao) {
         /// Verifica se a nova descricao eh valida
         if (!novaDescricao.length() || !novaDescricao.empty()) {
 
-            this->descricao = novaDescricao; //< Atribui a nova descricao
+            this->_descricao = novaDescricao; //< Atribui a nova descricao
         }
         else {
         
@@ -113,7 +121,7 @@ void Tarefa::setData(const std::string& novaData) {
             throw std::logic_error("Data no passado");
         }
 
-        this->data = novaData; ///< Atribui a nova data
+        this->_data = novaData; ///< Atribui a nova data
     }
     catch (const std::invalid_argument& e) {
         
@@ -138,7 +146,7 @@ void Tarefa::setPrioridade(const unsigned novaPrioridade) {
         /// Verifica se a nova prioridade eh valida
         if (novaPrioridade == 1 || novaPrioridade == 2 || novaPrioridade == 3) {
         
-            this->prioridade = novaPrioridade; ///< Atribui a nova prioridade
+            this->_prioridade = novaPrioridade; ///< Atribui a nova prioridade
         }
         else {
 
@@ -162,7 +170,7 @@ void Tarefa::setEstado(const std::string& novoEstado) {
         /// Verifica se o novo estado eh valido
         if (novoEstado == "feito" || novoEstado == "em progresso" || novoEstado == "não feito") {
         
-            this->estado = novoEstado; ///< Atribui o novo estado
+            this->_estado = novoEstado; ///< Atribui o novo estado
         }
         else {
 
@@ -180,19 +188,25 @@ void Tarefa::setEstado(const std::string& novoEstado) {
     }    
 }
 
+Compromisso::Compromisso(std::string& data, std::string& local, std::string& titulo, std::string& descricao, std::string& horario,
+            std::string& estado, unsigned prioridade) : Tarefa(titulo, descricao, data, prioridade, estado) {
+    _local = local;
+    _horario = horario;
+}
+
 std::string Compromisso::getCor() const {
 
-    return this->cor; ///< Retorna a cor
+    return this->_cor; ///< Retorna a cor
 }
 
 std::string Compromisso::getLocal() const {
 
-    return this->local; ///< Retorna o local
+    return this->_local; ///< Retorna o local
 }
 
 std::string Compromisso::getHorario() const {
 
-    return this->horario; ///< Retorna o horario
+    return this->_horario; ///< Retorna o horario
 }
 
 void Compromisso::setCor(const std::string& novaCor) {
@@ -204,19 +218,19 @@ void Compromisso::setCor(const std::string& novaCor) {
         
         if (novaCor == "laranja") {
 
-            this->cor = "\033[38;2;247;99;25m"; ///< Atribui a cor laranja
+            this->_cor = "\033[38;2;247;99;25m"; ///< Atribui a cor laranja
         }
         else if (novaCor == "azul") {
 
-            this->cor = "\033[38;2;25;84;247m"; ///< Atribui a cor azul
+            this->_cor = "\033[38;2;25;84;247m"; ///< Atribui a cor azul
         }
         else if (novaCor == "roxo") {
 
-            this->cor = "\033[38;2;140;25;247m"; ///< Atribui a cor roxa
+            this->_cor = "\033[38;2;140;25;247m"; ///< Atribui a cor roxa
         }
         else if (novaCor == "rosa") {
 
-            this->cor = "\033[38;2;247;25;180m"; ///< Atribui a cor rosa
+            this->_cor = "\033[38;2;247;25;180m"; ///< Atribui a cor rosa
         }
         else if (!novaCor.empty()) {
 
@@ -243,7 +257,7 @@ void Compromisso::setLocal(const std::string& novoLocal) {
         /// Verifica se o novo local eh valido
         if (!novoLocal.length() >= MAX_CARACTERES || !novoLocal.empty()) {
 
-            this->local = novoLocal; ///< Atribui o novo local
+            this->_local = novoLocal; ///< Atribui o novo local
         }
         else {
 
@@ -315,11 +329,11 @@ void Compromisso::setHorario(const std::string& novoHorario) {
                 throw std::logic_error("Horario no passado");
             }
 
-            this->horario = novoHorario; ///< Atribui o novo horario
+            this->_horario = novoHorario; ///< Atribui o novo horario
         }
         else {
 
-            this->horario = novoHorario; ///< Atribui o novo horario
+            this->_horario = novoHorario; ///< Atribui o novo horario
         }
     }
     catch (const std::invalid_argument& e) {
@@ -366,18 +380,18 @@ std::string setCorPrioridade(unsigned prioridade) {
 
 void ListaTarefa::adicionarTarefa(Tarefa* tarefa) {
     
-    listadeTarefa.push_back(*tarefa); ///< Adicionando a tarefa na lista
+    _listadeTarefa.push_back(*tarefa); ///< Adicionando a tarefa na lista
 }
 
 void ListaTarefa::removerTarefa(Tarefa* tarefa) {
 
-    listadeTarefa.remove(*tarefa); ///< Removendo a tarefa da lista
+    _listadeTarefa.remove(*tarefa); ///< Removendo a tarefa da lista
 }
 
 void ListaTarefa::verTarefas() const {
     
     /// Imprime as tarefas atuais da lista
-    for (const auto& tarefa : listadeTarefa) {
+    for (const auto& tarefa : _listadeTarefa) {
         
         /// Obtem a prioridade
         unsigned prioridade = tarefa.getPrioridade();
@@ -407,18 +421,18 @@ void ListaTarefa::verTarefas() const {
 
 void ListaCompromisso::adicionarCompromisso(Compromisso* compromisso) {
     
-    listadeCompromisso.push_back(*compromisso); ///< Adicionando o compromisso na lista
+    _listadeCompromisso.push_back(*compromisso); ///< Adicionando o compromisso na lista
 }
 
 void ListaCompromisso::removerCompromisso(Compromisso* compromisso) {
 
-    listadeCompromisso.remove(*compromisso); ///< Removendo o compromisso da lista
+    _listadeCompromisso.remove(*compromisso); ///< Removendo o compromisso da lista
 }
 
 void ListaCompromisso::verCompromissos() const {
 
     /// Imprime os compromissos atuais da lista
-    for (const auto& compromisso : listadeCompromisso) {
+    for (const auto& compromisso : _listadeCompromisso) {
      
         /// Obtem a prioridade
         unsigned prioridade = compromisso.getPrioridade();
