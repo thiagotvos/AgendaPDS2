@@ -43,6 +43,9 @@ public:
     ///
     /// @param lembrete O lembrete a ser removido
     void removerLembrete(Lembrete* lembrete);
+
+    /// @brief Imprime todos lembretes da lista 
+    void verLembretes();
     
 private:
     std::list<Lembrete> _listadeLembretes; ///< Armazena todos os lembretes ativos
