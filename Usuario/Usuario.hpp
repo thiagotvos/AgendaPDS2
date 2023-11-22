@@ -21,8 +21,8 @@ public:
    void mudaremail (std::string texto);
       
 private:
-   std::string nome; ///< Armazena o primeiro nome do usuario
-   std::string sobrenome; ///< Armazena o sobrenome do usuario
-   std::string idade; ///< Armazena a idade do usuario
-   std::string email; ///< Armazena o email do usuario
+   std::string _nome; ///< Armazena o primeiro nome do usuario
+   std::string _sobrenome; ///< Armazena o sobrenome do usuario
+   std::string _idade; ///< Armazena a idade do usuario
+   std::string _email; ///< Armazena o email do usuario
 };
