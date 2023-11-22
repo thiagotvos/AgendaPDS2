@@ -17,7 +17,7 @@ UsuarioMenu::UsuarioMenu(Usuario const &Usuario) {
   opcoes.push_back("3 --> Tarefas");
 }
 
-Menu *UsuarioMenu::next(unsigned option) {
+PrimeiroMenu *UsuarioMenu::next(unsigned option) {
   switch (option) {
   case 1: {
     
