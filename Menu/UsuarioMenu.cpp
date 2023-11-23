@@ -58,7 +58,6 @@ PrimeiroMenu *UsuarioMenu::next(unsigned option) {
     
     ///...
      return new TarefaMenu(usuario);
-    ///vai para o menu das Tarefas (a criar) 
     /// conferir se o parametro é o usuário mesmo
   }
   }
